@@ -1,6 +1,8 @@
-return function(e, text, action, x, y, width, height, cornerRadius)
+return function(e, text, clickAction, mouseInAction, mouseOutAction, x, y, width, height, cornerRadius)
   e:give("position", x, y)
   e:give("size", width, height)
-  e:give("mouseInput", action)
-  e:give("buttonWithText", text, cornerRadius)
+  e:give("mouseInput", clickAction)
+  e:give("mouseMove", mouseInAction, mouseOutAction)
+  e:give("mouseOutBounds")
+  e:give("buttonWithText", text, lineWidth, cornerRadius)
 end

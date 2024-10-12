@@ -4,6 +4,9 @@ local DrawButtonSystem = Concord.system({pool = {"buttonWithText", "position", "
 
 function DrawButtonSystem:draw()
   for _, e in ipairs(self.pool) do
+    local oldLineWidth = love.graphics.getLineWidth()
+    love.graphics.setLineWidth(e.buttonWithText.lineWidth)
+
     love.graphics.rectangle(
     "line",
     e.position.x,
@@ -12,6 +15,8 @@ function DrawButtonSystem:draw()
     e.size.height,
     e.buttonWithText.cornerRadius
     )
+
+    love.graphics.setLineWidth(oldLineWidth)
 
     love.graphics.printf(
     e.buttonWithText.text,

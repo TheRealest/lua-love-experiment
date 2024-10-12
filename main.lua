@@ -17,6 +17,7 @@ function love.load()
   world:addSystems(
   Systems.keyboardInputSystem,
   Systems.mouseInputSystem,
+  Systems.mouseMoveSystem,
   Systems.drawTextSystem,
   Systems.drawButtonsSystem
   )
@@ -30,8 +31,14 @@ function love.load()
   :assemble(
   Assemblages.button,
   "Test",
-  function(x, y)
+  function(e, x, y)
     colorDuration = 0.5
+  end,
+  function(e)
+    e.buttonWithText.lineWidth = 5
+  end,
+  function(e)
+    e.buttonWithText.lineWidth = 2
   end,
   300,
   300,
@@ -42,6 +49,10 @@ end
 
 function love.mousepressed(x, y, button)
   world:emit("mousepressed", x, y, button)
+end
+
+function love.mousemoved(x, y, dx, dy)
+  world:emit("mousemoved", x, y, dx, dy)
 end
 
 function love.update(dt)
