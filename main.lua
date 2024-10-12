@@ -21,17 +21,7 @@ function love.load()
   )
 
   local backgroundFlasherEntity = Concord.entity(world)
-  :give("behavior", {
-    default = { { backgroundColor = {0, 0, 0}, duration = 1 } },
-    flashing = {
-      { backgroundColor = {1, 0, 0}, duration = 0.1 },
-      { backgroundColor = {0, 0, 0}, duration = 0.1 },
-      { backgroundColor = {1, 0, 0}, duration = 0.07 },
-      { backgroundColor = {0, 0, 0}, duration = 0.07 },
-      { backgroundColor = {1, 0, 0}, duration = 0.3, after = "default" }
-    }
-  })
-  :give("backgroundColor")
+  :assemble(Assemblages.backgroundFlasher)
 
   Concord.entity(world)
   :assemble(Assemblages.button,
