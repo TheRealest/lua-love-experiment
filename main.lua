@@ -28,23 +28,15 @@ function love.load()
   :give("drawableText", "Hello World")
 
   Concord.entity(world)
-  :assemble(
-  Assemblages.button,
-  "Test",
-  function(e, x, y)
-    colorDuration = 0.5
-  end,
-  function(e)
-    e.buttonWithText.lineWidth = 5
-  end,
-  function(e)
-    e.buttonWithText.lineWidth = 2
-  end,
-  300,
-  300,
-  100,
-  50
-  )
+  :assemble(Assemblages.button,
+  {
+    x = 300,
+    y = 300,
+    text = "Test",
+    onClick = function()
+      colorDuration = 0.5
+    end
+  })
 end
 
 function love.mousepressed(x, y, button)
