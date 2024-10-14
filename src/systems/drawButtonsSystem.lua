@@ -21,7 +21,7 @@ function DrawButtonSystem:draw()
     love.graphics.printf(
     e.buttonWithText.text,
     e.position.x,
-    e.position.y + (e.size.height / 2) - 8,
+    e.position.y + (e.size.height / 2) - (FONT_SIZE / (5/3)),
     e.size.width,
     "center"
     )

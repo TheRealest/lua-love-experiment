@@ -1,3 +1,5 @@
+FONT_SIZE = 32
+
 local Concord = require("lib.concord")
 local Systems = {}
 local Assemblages = require("src/assemblages")
@@ -6,6 +8,8 @@ local world
 
 function love.load()
   love.window.setTitle("Hello World")
+  love.graphics.setFont(love.graphics.newFont("assets/fonts/DejaVuSansMono.ttf", FONT_SIZE))
+
   Concord.utils.loadNamespace("src/components")
   Concord.utils.loadNamespace("src/systems", Systems)
 
@@ -28,7 +32,7 @@ function love.load()
   {
     x = 300,
     y = 300,
-    text = "Test",
+    text = "☥test",
     onClick = function()
       backgroundFlasherEntity.behavior.behavior:setState("flashing")
     end
