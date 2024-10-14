@@ -18,10 +18,10 @@ function love.load()
   Systems.keyboardInputSystem,
   Systems.mouseInputSystem,
   Systems.mouseMoveSystem,
+  Systems.behaviorSystem,
   Systems.drawTextSystem,
   Systems.drawButtonsSystem,
-  Systems.setBackgroundColorSystem,
-  Systems.behaviorSystem
+  Systems.setBackgroundColorSystem
   )
 
   local backgroundFlasherEntity = Concord.entity(world)
