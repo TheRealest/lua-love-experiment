@@ -3,6 +3,7 @@ FONT_SIZE = 32
 local Concord = require("lib.concord")
 local Systems = {}
 local Assemblages = require("src/assemblages")
+local DeckFactory = require("src/factories/deckFactory")
 
 local world
 
@@ -37,6 +38,8 @@ function love.load()
       backgroundFlasherEntity.behavior.behavior:setState("flashing")
     end
   })
+
+  DeckFactory.createDefaultDeck(world)
 end
 
 function love.mousepressed(x, y, button)
