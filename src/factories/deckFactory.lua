@@ -4,7 +4,7 @@ DEFAULT_DECK_CARDTYPES = {
   "acolyte",
   "acolyte",
   "priest",
-  "goat"
+  "goat",
 }
 
 local DeckFactory = {}
