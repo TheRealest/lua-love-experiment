@@ -23,6 +23,7 @@ function love.load()
   Systems.mouseInputSystem,
   Systems.mouseMoveSystem,
   Systems.behaviorSystem,
+  Systems.playCardSystem,
   Systems.drawTextSystem,
   Systems.drawButtonsSystem,
   Systems.setBackgroundColorSystem
@@ -34,12 +35,10 @@ function love.load()
   Concord.entity(world)
   :assemble(Assemblages.button,
   {
-    x = 300,
-    y = 300,
-    text = "☥test",
-    onClick = function()
-      backgroundFlasherEntity.behavior.behavior:setState("flashing")
-    end
+    x = 680,
+    y = 530,
+    text = "Draw",
+    onClick = function() world:emit("playCard") end
   })
 
   DeckFactory.createDefaultDeck(world)
