@@ -24,6 +24,7 @@ function love.load()
   Systems.mouseMoveSystem,
   Systems.behaviorSystem,
   Systems.playCardSystem,
+  Systems.drawPlayAreaSystem,
   Systems.drawTextSystem,
   Systems.drawButtonsSystem,
   Systems.setBackgroundColorSystem
