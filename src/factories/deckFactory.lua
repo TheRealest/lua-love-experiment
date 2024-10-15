@@ -7,7 +7,7 @@ DEFAULT_DECK_CARDTYPES = {
   "goat"
 }
 
-DeckFactory = {}
+local DeckFactory = {}
 
 function DeckFactory.createDefaultDeck(world)
   for _, cardType in ipairs(DEFAULT_DECK_CARDTYPES) do
