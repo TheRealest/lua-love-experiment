@@ -14,8 +14,11 @@ function love.load()
   Concord.utils.loadNamespace("src/components")
   Concord.utils.loadNamespace("src/systems", Systems)
 
+  --Systems.debugSystem:setEnable(false)
+
   world = Concord.world()
   world:addSystems(
+  Systems.debugSystem,
   Systems.keyboardInputSystem,
   Systems.mouseInputSystem,
   Systems.mouseMoveSystem,
