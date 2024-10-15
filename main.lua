@@ -3,6 +3,7 @@ FONT_SIZE = 32
 local Concord = require("lib.concord")
 local Systems = {}
 local Assemblages = require("src/assemblages")
+local DeckFactory = require("src/factories/deckFactory")
 
 local world
 
@@ -13,12 +14,17 @@ function love.load()
   Concord.utils.loadNamespace("src/components")
   Concord.utils.loadNamespace("src/systems", Systems)
 
+  --Systems.debugSystem:setEnable(false)
+
   world = Concord.world()
   world:addSystems(
+  Systems.debugSystem,
   Systems.keyboardInputSystem,
   Systems.mouseInputSystem,
   Systems.mouseMoveSystem,
   Systems.behaviorSystem,
+  Systems.playCardSystem,
+  Systems.drawPlayAreaSystem,
   Systems.drawTextSystem,
   Systems.drawButtonsSystem,
   Systems.setBackgroundColorSystem
@@ -30,13 +36,13 @@ function love.load()
   Concord.entity(world)
   :assemble(Assemblages.button,
   {
-    x = 300,
-    y = 300,
-    text = "☥test",
-    onClick = function()
-      backgroundFlasherEntity.behavior.behavior:setState("flashing")
-    end
+    x = 680,
+    y = 530,
+    text = "Draw",
+    onClick = function() world:emit("playCard") end
   })
+
+  DeckFactory.createDefaultDeck(world)
 end
 
 function love.mousepressed(x, y, button)

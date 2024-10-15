@@ -12,9 +12,11 @@ return function(e, options)
   options.lineWidth = options.lineWidth or 2
   options.onMouseEnter = options.onMouseEnter or function(e)
     e.buttonWithText.lineWidth = 5
+    love.mouse.setCursor(love.mouse.getSystemCursor("hand"))
   end
   options.onMouseExit = options.onMouseExit or function(e)
     e.buttonWithText.lineWidth = 2
+    love.mouse.setCursor(love.mouse.getSystemCursor("arrow"))
   end
 
   e:give("position", options.x, options.y)
