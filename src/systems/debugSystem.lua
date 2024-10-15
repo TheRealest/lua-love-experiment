@@ -1,17 +1,12 @@
 local Concord = require("lib.concord")
+local util = require("src.util")
 
 local DebugSystem = Concord.system({cardsInDeckPool = {"card", "inDeck"}, cardsInPlayPool = {"card", "inPlay"}})
 
 function DebugSystem:draw()
-  local inDeckCardCounts = {}
-  for _, e in ipairs(self.cardsInDeckPool) do
-    inDeckCardCounts[e.card.cardType] = (inDeckCardCounts[e.card.cardType] or 0) + 1
-  end
-
-  local sortedCardTypes = {}
-  for cardType, _ in pairs(inDeckCardCounts) do
-    table.insert(sortedCardTypes, cardType)
-  end
+  local cardTypes = util.table.map(self.cardsInDeckPool, function(e) return e.card.cardType end)
+  local inDeckCardCounts = util.table.tally(cardTypes)
+  local sortedCardTypes = util.table.keys(inDeckCardCounts)
   table.sort(sortedCardTypes)
 
   local cardTypeDebug = "-- Deck:\n"
